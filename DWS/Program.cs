@@ -1,7 +1,10 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace DWS_Lite
+namespace DWS
 {
     static class Program
     {
@@ -9,11 +12,11 @@ namespace DWS_Lite
         /// The main entry point for the application.
         /// </summary>
         [STAThread]
-        static void Main(string[] args)
+        static void Main()
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MainDwsForm(args));
+            Application.Run(new MainForm());
         }
     }
 }

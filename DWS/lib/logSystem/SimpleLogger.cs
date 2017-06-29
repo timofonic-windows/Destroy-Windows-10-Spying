@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Reflection;
 using System.Text;
+using System.Threading.Tasks;
 
-namespace DWS_Lite.LogSystem
+namespace DWS.lib.logSystem
 {
-    public class Log
+    public class SimpleLogger
     {
         private string DatetimeFormat;
         private string Filename;
@@ -18,7 +18,7 @@ namespace DWS_Lite.LogSystem
         /// Default is create a fresh new log file.
         /// </summary>
         /// <param name="append">True to append to existing log file, False to overwrite and create new log file</param>
-        public Log(bool append = false)
+        public SimpleLogger(bool append = false)
         {
             DatetimeFormat = "yyyy-MM-dd HH:mm:ss.fff";
             Filename = "DWS.log";
@@ -35,6 +35,7 @@ namespace DWS_Lite.LogSystem
                     WriteLine(DateTime.Now.ToString(DatetimeFormat) + " " + logHeader, false);
             }
         }
+
         /// <summary>
         /// Log a debug message
         /// </summary>
