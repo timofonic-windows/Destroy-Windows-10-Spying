@@ -4,23 +4,21 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DWS"
+        xmlns:plugins="clr-namespace:DWS.Plugins" 
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        Title="MainWindow" Height="350" Width="525"
+        DataContext="{Binding Items,Source={x:Static plugins:AbtractPlugin.Instances}}"
+        >
     <Grid>
         <TabControl Name="MainTabControl">
             <TabItem Header="Hello" Name="WelcomePage">Welcome page. TODO!</TabItem>
             <TabItem Header="Settings" Name="SettingsPage">TODO!</TabItem>
             <TabItem Header="Plugins" Name="PluginsPage">
-                <Grid Name="PluginsGrid" >
-                    <GroupBox Name="TEST"  Grid.Column="1" Header="Plugin : 0.0.1">
-                        <Page>
-                            <Grid>
-                                <CheckBox Grid.Row="0" > qwe</CheckBox>
-                                <CheckBox Grid.Row="1">qwe</CheckBox>
-                            </Grid>
-                        </Page>
+                <ListView ItemsSource="{Binding Items}" >
+                    <GroupBox Header="{Binding UIHeader}">
+                        <Frame Source="{Binding UIFrameSource}" ></Frame>
                     </GroupBox>
-                </Grid>
+                </ListView>
             </TabItem>
             <TabItem Header="Credintals" Name="CredintalsPage">Authors : Nummer and Sergius-Dart</TabItem>
         </TabControl>

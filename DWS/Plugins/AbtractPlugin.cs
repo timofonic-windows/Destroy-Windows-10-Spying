@@ -12,7 +12,7 @@ using System.Reflection;
 namespace DWS.Plugins
 {
     public class AbtractPlugin : INotifyPropertyChanged
-    {
+    {   
         /*Collect All plugins*/
         private static ObservableCollection<AbtractPlugin> _instances;
 
