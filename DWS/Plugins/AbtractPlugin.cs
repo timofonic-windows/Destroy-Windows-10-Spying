@@ -11,21 +11,35 @@ using System.Reflection;
 
 namespace DWS.Plugins
 {
-    public class AbtractPlugin : INotifyPropertyChanged
-    {   
-        /*Collect All plugins*/
-        private static ObservableCollection<AbtractPlugin> _instances;
+    public abstract class IAbstractPlugin
+    {
+        /* Name you plugin */
+        public abstract string Name { get; }
+        /*You version */
+        public abstract string Version { get; }
+        /* Its you. With email. May be... */
+        public abstract string Author { get; }
 
+        public abstract string UIHeader{get;}
+
+        /*Source you xaml settings UI*/
+        public abstract object UIControl{get;}
+    }
+
+    public abstract class AbtractPlugin : IAbstractPlugin, INotifyPropertyChanged
+    {
+        private static ObservableCollection<AbtractPlugin> _instances = new ObservableCollection<AbtractPlugin>();
+        /*Collect All plugins*/
         public static ObservableCollection<AbtractPlugin> Instances
         {
-            get{ return _instances; }
+            get { return _instances;  }
         }
-        AbtractPlugin()
+        protected AbtractPlugin()
         {
-            foreach (AbtractPlugin _p in _instances)
+            foreach (AbtractPlugin _p in Instances )
                 if (_p.Name == Name && _p.Version == Version)
                     throw new Exception("WTF?");
-            _instances.Add(this);
+            Instances.Add(this);
         }
 
 
@@ -89,11 +103,9 @@ namespace DWS.Plugins
                 }
             }
         }
-        /* Name you plugin */
-        public string Name { get { return "Basic plugin"; } }
-        public string Version { get { return "0.0.1"; } }
-        /* Its you. With email. May be... */
-        public string Author { get { return "Unknown author < example@exampl.com >"; } }
+
+
+
         /* Start apply you plugin */
         public void Apply() {
             throw new NotImplementedException();
@@ -103,16 +115,12 @@ namespace DWS.Plugins
             throw new NotImplementedException();
         }
 
-        public string UIHeader
+        public override string Name { get { return "Basic plugin"; } }
+        public override string Version { get { return "0.0.1"; } }
+        public override string Author { get { return "Unknown author < example@exampl.com >"; } }
+        public override string UIHeader
         {
             get { return Name + " : " + Version; }
         }
-
-        /*Source you xaml settings UI*/
-        public string UIFrameSource
-        {
-            get { return Name + ".xaml"; }
-        }
-
     }
 }

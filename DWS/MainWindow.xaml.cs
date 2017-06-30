@@ -24,6 +24,13 @@ namespace DWS
         public MainWindow()
         {
             InitializeComponent();
+            Console.WriteLine( Plugins.SimplePlugin.SimplePlugin.Instance.Name);
+            Console.WriteLine("----------------------");
+            foreach(AbtractPlugin _plugin in AbtractPlugin.Instances )
+            {
+                Console.WriteLine(_plugin.UIHeader);
+            }
+            Console.WriteLine("----------------------");
         }
     }
 }

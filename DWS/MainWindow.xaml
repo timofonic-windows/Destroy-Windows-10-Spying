@@ -7,17 +7,25 @@
         xmlns:plugins="clr-namespace:DWS.Plugins" 
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525"
-        DataContext="{Binding Items,Source={x:Static plugins:AbtractPlugin.Instances}}"
         >
     <Grid>
         <TabControl Name="MainTabControl">
             <TabItem Header="Hello" Name="WelcomePage">Welcome page. TODO!</TabItem>
             <TabItem Header="Settings" Name="SettingsPage">TODO!</TabItem>
             <TabItem Header="Plugins" Name="PluginsPage">
-                <ListView ItemsSource="{Binding Items}" >
-                    <GroupBox Header="{Binding UIHeader}">
-                        <Frame Source="{Binding UIFrameSource}" ></Frame>
-                    </GroupBox>
+                <ListView ItemsSource="{Binding Source={x:Static plugins:AbtractPlugin.Instances}}" Name="PluginSettingsList"  >
+                    <ListView.ItemContainerStyle>
+                        <Style TargetType="ListViewItem">
+                            <Setter Property="Focusable" Value="false"/>
+                        </Style>
+                    </ListView.ItemContainerStyle>
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <GroupBox Header="{Binding UIHeader}">
+                                <ContentControl Content="{Binding UIControl}"></ContentControl>
+                            </GroupBox>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
                 </ListView>
             </TabItem>
             <TabItem Header="Credintals" Name="CredintalsPage">Authors : Nummer and Sergius-Dart</TabItem>
