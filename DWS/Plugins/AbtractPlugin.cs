@@ -114,35 +114,11 @@ namespace DWS.Plugins
             get { return Name + " : " + Version; }
         }
 
-        private GroupBox _cacheUI;
-        /*override to you settings*/
-        public GroupBox UISettings
+        /*Source you xaml settings UI*/
+        public string UIFrameSource
         {
-            get {
-                if ( _cacheUI != null)
-                    return _cacheUI;
-                _cacheUI = new GroupBox();
-                _cacheUI.DataContext = this;
-                _cacheUI.SetBinding(GroupBox.HeaderProperty, "{Binding UIHeader}");
-                var grid = new Grid();
-                grid.DataContext = Settings;
-                _cacheUI.Content = grid;
-
-                var props = Settings.GetType().GetProperties();
-
-                for (int i = 0; i < props.Length; i++)
-                    grid.RowDefinitions.Add(new RowDefinition());
-
-                for( int i = 0; i < props.Length; i++ )
-                {
-                    var prop = props[i];
-                    var ui = new CheckBox();
-                    grid.SetValue(CheckBox.ContentProperty, prop.Name );
-
-                }
-
-                return _cacheUI;
-            }
+            get { return Name + ".xaml"; }
         }
+
     }
 }

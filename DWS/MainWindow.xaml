@@ -13,14 +13,12 @@
             <TabItem Header="Plugins" Name="PluginsPage">
                 <Grid Name="PluginsGrid" >
                     <GroupBox Name="TEST"  Grid.Column="1" Header="Plugin : 0.0.1">
-                        <Grid >
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="Auto" />
-                                <RowDefinition Height="Auto" />
-                            </Grid.RowDefinitions>
-                            <CheckBox Grid.Row="0" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch">QWE</CheckBox>
-                            <CheckBox Grid.Row="1" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch">ASD</CheckBox>
-                        </Grid>
+                        <Page>
+                            <Grid>
+                                <CheckBox Grid.Row="0" > qwe</CheckBox>
+                                <CheckBox Grid.Row="1">qwe</CheckBox>
+                            </Grid>
+                        </Page>
                     </GroupBox>
                 </Grid>
             </TabItem>
