@@ -7,6 +7,24 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
     <Grid>
-        
+        <TabControl Name="MainTabControl">
+            <TabItem Header="Hello" Name="WelcomePage">Welcome page. TODO!</TabItem>
+            <TabItem Header="Settings" Name="SettingsPage">TODO!</TabItem>
+            <TabItem Header="Plugins" Name="PluginsPage">
+                <Grid Name="PluginsGrid" >
+                    <GroupBox Name="TEST"  Grid.Column="1" Header="Plugin : 0.0.1">
+                        <Grid >
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <CheckBox Grid.Row="0" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch">QWE</CheckBox>
+                            <CheckBox Grid.Row="1" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch">ASD</CheckBox>
+                        </Grid>
+                    </GroupBox>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Credintals" Name="CredintalsPage">Authors : Nummer and Sergius-Dart</TabItem>
+        </TabControl>
     </Grid>
 </Window>

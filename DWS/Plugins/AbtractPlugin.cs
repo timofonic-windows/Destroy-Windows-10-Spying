@@ -6,11 +6,18 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
 
 namespace DWS.Plugins
 {
     public class AbtractPlugin : INotifyPropertyChanged
     {
+        private SettingsPlugin _settings;
+        public SettingsPlugin Settings
+        {
+            get;
+            private set;
+        }
         /*Collect All plugins*/
         private static ObservableCollection<AbtractPlugin> _instances;
 
@@ -52,7 +59,40 @@ namespace DWS.Plugins
         public int Progress
         {
             get { return _progress; }
-            protected set { if (_progress != value) { _progress = value; NotifyPropertyChanged(); } }
+            protected set {
+                if (_progress != value)
+                {
+                    _progress = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
+
+        private bool _availableApply = false;
+        /* Set true - if system come to apply you plugin */
+        public bool AvailableApply {
+            get { return _availableApply; }
+            protected set {
+                if ( _availableApply != value)
+                {
+                    _availableApply = value;
+                    NotifyPropertyChanged();
+                }
+            } }
+
+        private bool _availableRevoke = false;
+        /* Set true - if system come to revoke plugin work */
+        public bool AvailableRevoke
+        {
+            get { return _availableRevoke; }
+            protected set
+            {
+                if (_availableRevoke != value)
+                {
+                    _availableRevoke = value;
+                    NotifyPropertyChanged();
+                }
+            }
         }
         /* Name you plugin */
         public string Name { get { return "Basic plugin"; } }
@@ -67,13 +107,24 @@ namespace DWS.Plugins
         public void Revoke() {
             throw new NotImplementedException();
         }
-        /* Return true - if system come to apply you plugin */
-        public bool AvailableApply() {
-            throw new NotImplementedException();
+
+        public string UIHeader
+        {
+            get { return Name + " : " + Version; }
         }
-        /* Return true - if system come to revoke plugin work */
-        public bool AvailableRevoke() {
-            throw new NotImplementedException();
+
+        private GroupBox _cacheUI;
+        /*override to you settings*/
+        public GroupBox UISettings
+        {
+            get {
+                if ( _cacheUI != null)
+                    return _cacheUI;
+                _cacheUI = new GroupBox();
+                _cacheUI.DataContext = this;
+                _cacheUI.SetBinding(GroupBox.HeaderProperty, "{Binding UIHeader}");
+                return _cacheUI;
+            }
         }
     }
 }
