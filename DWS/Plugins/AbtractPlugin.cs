@@ -13,12 +13,6 @@ namespace DWS.Plugins
 {
     public class AbtractPlugin : INotifyPropertyChanged
     {
-        private SettingsPlugin _settings;
-        public SettingsPlugin Settings
-        {
-            get;
-            private set;
-        }
         /*Collect All plugins*/
         private static ObservableCollection<AbtractPlugin> _instances;
 
