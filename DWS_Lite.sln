@@ -1,9 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26430.14
+VisualStudioVersion = 15.0.26228.10
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DWS", "DWS\DWS.csproj", "{A87E1D58-B92A-476A-A21F-F6807A72D553}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HostsEditor", "Plugins\HostsEditor\HostsEditor.csproj", "{78683FDE-E4C2-46C7-9366-C1B851A5335E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Plugins", "Plugins", "{B69148E3-3B98-4D6B-892B-E5D0E8C1913B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,8 +19,15 @@ Global
 		{A87E1D58-B92A-476A-A21F-F6807A72D553}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A87E1D58-B92A-476A-A21F-F6807A72D553}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A87E1D58-B92A-476A-A21F-F6807A72D553}.Release|Any CPU.Build.0 = Release|Any CPU
+		{78683FDE-E4C2-46C7-9366-C1B851A5335E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{78683FDE-E4C2-46C7-9366-C1B851A5335E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{78683FDE-E4C2-46C7-9366-C1B851A5335E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{78683FDE-E4C2-46C7-9366-C1B851A5335E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{78683FDE-E4C2-46C7-9366-C1B851A5335E} = {B69148E3-3B98-4D6B-892B-E5D0E8C1913B}
 	EndGlobalSection
 EndGlobal
