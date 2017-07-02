@@ -8,7 +8,7 @@ using DWS.Plugins;
 
 namespace HostsEditor
 {
-    public class HostsPlugin : AbstractPlugin
+    public class HostsEditorPlugin : AbstractPlugin
     {
 
         public override string Name => "HostsEditor";
@@ -17,7 +17,7 @@ namespace HostsEditor
 
         public override string Description => @"Default plugin for add spy domains to hosts file.";
         
-        public HostsPlugin()
+        public HostsEditorPlugin()
         {
 #if DEBUG
             MessageBox.Show(@"Plugin Loaded");
@@ -33,6 +33,7 @@ namespace HostsEditor
 
         private object _ui = new Settings();
         public override object UIControl => _ui;
+        
 
     }
 }

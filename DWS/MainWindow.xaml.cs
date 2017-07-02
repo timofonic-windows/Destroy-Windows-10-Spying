@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using DWS.Plugins;
+using System.IO;
 
 namespace DWS
 {
@@ -21,6 +22,7 @@ namespace DWS
     /// </summary>
     public partial class MainWindow : Window
     {
+        PluginManager Manager = new PluginManager(System.IO.Path.Combine( Directory.GetCurrentDirectory(), "Plugins" ) );
         public MainWindow()
         {
             InitializeComponent();
