@@ -74,6 +74,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Plugins\AbtractPlugin.cs" />
+    <Compile Include="Plugins\IAbstractPlugin.cs" />
     <Compile Include="Plugins\SimplePlugin\SimplePlugin.cs" />
     <Compile Include="Plugins\SimplePlugin\SimplePlugin_ui.xaml.cs">
       <DependentUpon>SimplePlugin_ui.xaml</DependentUpon>

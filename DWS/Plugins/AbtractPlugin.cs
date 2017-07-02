@@ -11,32 +11,17 @@ using System.Reflection;
 
 namespace DWS.Plugins
 {
-    public abstract class IAbstractPlugin
+    public abstract class AbstractPlugin : IAbstractPlugin, INotifyPropertyChanged
     {
-        /* Name you plugin */
-        public abstract string Name { get; }
-        /*You version */
-        public abstract string Version { get; }
-        /* Its you. With email. May be... */
-        public abstract string Author { get; }
-
-        public abstract string UIHeader{get;}
-
-        /*Source you xaml settings UI*/
-        public abstract object UIControl{get;}
-    }
-
-    public abstract class AbtractPlugin : IAbstractPlugin, INotifyPropertyChanged
-    {
-        private static ObservableCollection<AbtractPlugin> _instances = new ObservableCollection<AbtractPlugin>();
+        private static ObservableCollection<AbstractPlugin> _instances = new ObservableCollection<AbstractPlugin>();
         /*Collect All plugins*/
-        public static ObservableCollection<AbtractPlugin> Instances
+        public static ObservableCollection<AbstractPlugin> Instances
         {
             get { return _instances;  }
         }
-        protected AbtractPlugin()
+        protected AbstractPlugin()
         {
-            foreach (AbtractPlugin _p in Instances )
+            foreach (AbstractPlugin _p in Instances )
                 if (_p.Name == Name && _p.Version == Version)
                     throw new Exception("WTF?");
             Instances.Add(this);
@@ -118,6 +103,7 @@ namespace DWS.Plugins
         public override string Name { get { return "Basic plugin"; } }
         public override string Version { get { return "0.0.1"; } }
         public override string Author { get { return "Unknown author < example@exampl.com >"; } }
+        public override string Description => "Not description";
         public override string UIHeader
         {
             get { return Name + " : " + Version; }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DWS.Plugins.SimplePlugin
 {
-    public class SimplePlugin:AbtractPlugin
+    public class SimplePlugin:AbstractPlugin
     {
         public override string Name => "SimplePlugin"; 
         public override string Author => "No author, lol";

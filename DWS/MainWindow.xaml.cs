@@ -26,7 +26,7 @@ namespace DWS
             InitializeComponent();
             Console.WriteLine( Plugins.SimplePlugin.SimplePlugin.Instance.Name);
             Console.WriteLine("----------------------");
-            foreach(AbtractPlugin _plugin in AbtractPlugin.Instances )
+            foreach(AbstractPlugin _plugin in AbstractPlugin.Instances )
             {
                 Console.WriteLine(_plugin.UIHeader);
             }
