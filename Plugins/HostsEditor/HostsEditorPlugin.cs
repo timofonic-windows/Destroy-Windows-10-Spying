@@ -10,7 +10,7 @@ namespace HostsEditor
 {
     public class HostsEditorPlugin : AbstractPlugin
     {
-
+        private Hosts m_editor;
         public override string Name => "HostsEditor";
         public override string Author => "Main writed nummer - refactpring sergius-dart.";
         public override string Version => "0.0.1";
@@ -19,15 +19,10 @@ namespace HostsEditor
         
         public HostsEditorPlugin()
         {
+            State = STATE.NONE;
+            m_editor = new Hosts();
 #if DEBUG
-            MessageBox.Show(@"Plugin Loaded");
-#endif
-        }
-
-        public void PluginStart()
-        {
-#if DEBUG
-            MessageBox.Show(@"Plugin Started");
+            //MessageBox.Show(@"Plugin Loaded");
 #endif
         }
 

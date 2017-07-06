@@ -6,6 +6,7 @@ using System.Net;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace HostsEditor
 {
@@ -21,15 +22,15 @@ namespace HostsEditor
             public string comment;
             public override string Extract() => "#" + comment + "\r\n";
         }
-        class IpElement : BaseElement {
-            public IpElement( string _a) { address = IPAddress.Parse(_a); }
+        class Record : BaseElement {
+            public Record( string _a, string _d)
+            {
+                address = IPAddress.Parse(_a);
+                domain = _d;
+            }
             public IPAddress address;
-            public override string Extract() => address.ToString() + "\t"; //add tab after ip address
-        }
-        class DomainElement : BaseElement {
-            public DomainElement( string _d) { domain = _d; }
             public string domain;
-            public override string Extract()=> domain + "\t";
+            public override string Extract() => address.ToString() + "\t" + domain; //add tab after ip address
         }
         class UnckonwElement : BaseElement {
             public UnckonwElement(string _s) { unparsed = _s; }
@@ -46,6 +47,9 @@ namespace HostsEditor
         public Hosts()
         {
             ParseFile();
+            foreach (BaseElement _b in _hostsElements)
+                if (_b is Record)
+                    MessageBox.Show((_b as Record).Extract());
         }
 
         const string COMMENT = "COMMENT";
@@ -77,8 +81,8 @@ namespace HostsEditor
                     if (tokens.Length >= 2 && tokens[0].Type == ELEMENT && tokens[1].Type == ELEMENT)
                     {
                         //add ip and host
-                        _hostsElements.Add(new IpElement(tokens[0].Value));
-                        _hostsElements.Add(new DomainElement(tokens[1].Value));
+                        _hostsElements.Add(new Record(tokens[0].Value, tokens[1].Value));
+                        _hostsElements.Add(new EmptyLine());//add \r\n 
                     }
                     else
                     {
@@ -90,7 +94,7 @@ namespace HostsEditor
                             else
                                 _hostsElements.Add(new UnckonwElement(_t.Value));
                         }
-                    }
+                    }                        
                 }
             }
         }
