@@ -37,7 +37,7 @@ namespace DWS.Plugins
                     {
                         Activator.CreateInstance(_type);
                         break;
-                    }                
+                    }
             }
         }
     }
