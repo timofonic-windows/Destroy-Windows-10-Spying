@@ -6,12 +6,12 @@
   
 - Remove all spyware modules
 - Remove spying apps
-- Add spying domains to hosts file!
+- Add spying domains to `hosts` file
 - Remove spying services
 - Remove Windows 10 Metro Apps
 - Support Windows 7/8/8.1/10 and Server 2008-2012 R2
 - Remove Office 2016 telemetry
-- Open Source!
+- **Open Source**
 
 ### Copyright 2018 Nummer
 
